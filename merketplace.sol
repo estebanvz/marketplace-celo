@@ -3,12 +3,14 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 contract Marketplace {
-    string internal product;
-    function writeProduct(string memory _product) public{
-        product=_product;
+    // string internal product;
+    mapping (uint => string) internal products;
+
+    function writeProduct(uint _index, string memory _product) public{
+        products[_index]=_product;
     }
 
-    function readProduct() public view returns(string memory){
-        return product;
+    function readProduct(uint _index) public view returns(string memory){
+        return products[_index];
     }
 }
